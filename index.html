@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wat eten we vanavond?</title>
+  <meta name="description" content="Kies snel een recept uit onze kookboeken.">
+  <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b1714" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,50;1,9..144,400..700,50&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Naar de inhoud</a>
+  <header class="topbar">
+    <a class="brand" href="#/" aria-label="Wat eten we vanavond? — startpagina">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Wat eten we vanavond?</span>
+    </a>
+    <nav class="topnav" aria-label="Hoofdmenu">
+      <a href="#/" data-nav="home">Ontdekken</a>
+      <button type="button" class="topnav-surprise" data-action="surprise">Verras me</button>
+      <a href="#/menu" data-nav="menu">Weekmenu <span class="count" data-menu-count hidden></span></a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="loading" role="status">Recepten aan het opwarmen…</div>
+  </main>
+
+  <nav class="tabbar" aria-label="Hoofdmenu">
+    <a href="#/" data-nav="home"><span data-icon="search"></span>Ontdekken</a>
+    <button type="button" class="tabbar-surprise" data-action="surprise"><span data-icon="dice"></span>Verras me</button>
+    <a href="#/menu" data-nav="menu"><span data-icon="basket"></span>Weekmenu <span class="count" data-menu-count hidden></span></a>
+  </nav>
+
+  <dialog class="sheet" id="filters" aria-labelledby="filters-title"></dialog>
+  <dialog class="surprise" id="surprise" aria-label="Verras me"></dialog>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <div class="sr-only" id="status" role="status" aria-live="polite"></div>
+</body>
+</html>
