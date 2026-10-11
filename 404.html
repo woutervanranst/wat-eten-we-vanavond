@@ -1,0 +1,47 @@
+<!doctype html>
+<!--
+  The old GitHub Pages address (woutervanranst.github.io/wat-eten-we-vanavond) now only serves
+  this page, as index.html and 404.html. It forwards to the Azure site and carries along what
+  this browser still has stored there (favourites, "niet voor ons", cooking history); the new
+  site asks before it takes anything over (#/verhuis in site/js/app.js). See README: "Publiceren".
+-->
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Wat eten we vanavond? is verhuisd</title>
+  <style>
+    :root { color-scheme: light dark; --paper: #faf6ef; --ink: #2b2420; --accent: #c4552f; }
+    @media (prefers-color-scheme: dark) { :root { --paper: #1b1714; --ink: #f1e9df; --accent: #e6835e; } }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; box-sizing: border-box;
+      background: var(--paper); color: var(--ink); font: 1.05rem/1.5 system-ui, sans-serif; text-align: center; }
+    a { color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>We zijn verhuisd</h1>
+    <p>Je gaat zo naar <a id="to" href="https://icy-pond-0ea999b03.5.azurestaticapps.net/">het nieuwe adres</a>.
+      Zet het daar opnieuw op je beginscherm.</p>
+  </main>
+  <script>
+    const target = "https://icy-pond-0ea999b03.5.azurestaticapps.net/";
+    let url = target;
+    try {
+      const data = JSON.parse(localStorage.getItem("wev.v1") ?? "null");
+      const keep = { favorites: data?.favorites ?? [], bad: data?.bad ?? [], cooked: data?.cooked ?? {} };
+      if (keep.favorites.length || keep.bad.length || Object.keys(keep.cooked).length) {
+        const bytes = new TextEncoder().encode(JSON.stringify(keep));
+        const b64 = btoa(Array.from(bytes, (b) => String.fromCharCode(b)).join(""))
+          .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+        url = `${target}#/verhuis?d=${b64}`;
+      }
+    } catch {
+      // Nothing (readable) stored here: just go.
+    }
+    document.getElementById("to").href = url;
+    location.replace(url);
+  </script>
+</body>
+</html>
