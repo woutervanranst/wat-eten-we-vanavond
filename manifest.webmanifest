@@ -1,0 +1,16 @@
+{
+  "name": "Wat eten we vanavond?",
+  "short_name": "Vanavond",
+  "description": "Kies snel een recept uit onze kookboeken.",
+  "lang": "nl-BE",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf6ef",
+  "theme_color": "#c4552f",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-180.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
